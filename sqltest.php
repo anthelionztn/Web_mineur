@@ -1,5 +1,5 @@
  <?php
-    echo "This is a test!"; 
+    echo "This is a test!\n"; 
     $mysql_server_name="localhost"; //数据库服务器名称
     $mysql_username="user"; // 连接数据库用户名
     $mysql_password="user"; // 连接数据库密码
@@ -39,6 +39,7 @@
       {
         //echo '<td bgcolor="#00FF00">';
         echo $row[$i];
+        echo "\n";
         //echo '</td>';
       }
       //echo "</tr></b>";
