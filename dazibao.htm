@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Neeko's JS interpreter :-)</title>
+
+<!-- Chargement de la feuille de style-->
+<link rel="stylesheet" href="style.css" type="text/css">
+<script type="text/javascript" src="http://127.0.1.1/dazibao.js"></script>
+<!-- Ici, on va mettre le code source en Javascript -->
+<!-- Notons qu'en HTML5, il n'est pas nécéssaire de préciser 
+     qu'il s'agit de Javascript si c'en est... -->
+<script>
+/** Fonction appelée lorsqu'on clique sur le bouton "Eval"
+ *    Essaye d'interpréter le code dans "srcArea". 
+ */
+function evalButtonClicked() { 
+	try{
+		// Ici, on utiliser le DOM pour récupérer le code dans 
+		// la zone de texte appelée "srcArea" et on l'évalue
+		eval(document.getElementById("srcArea").value); 
+		}
+	catch(ex){
+		// S'il y a une erreur dans le code entrée, un exception 
+		// est lancée, qu'on affiche
+		alert(ex); 
+		}
+  	return true;
+	}
+
+function clearoutputButtonClicked() { 
+	eval(document.getElementById("outputArea").value="");
+    return true;
+	}
+
+function clearallButtonClicked(){
+	eval(document.getElementById("outputArea").value="");
+	eval(document.getElementById("srcArea").value="");
+	}
+
+function newline(){
+	eval(document.getElementById("outputArea").value+="\n");
+
+	}
+
+/** Affiche text à la suite dans la zone de texte "outputArea" 
+ */
+function echo(text){
+	document.getElementById("outputArea").value = 
+    document.getElementById("outputArea").value.concat(text);
+    return true; 
+	}
+
+</script>
+</head>
+	
+<body>
+	<h1>Neeko's JS interpreter</h1>
+	
+Tapez votre code ici : <br>
+<!-- La zone "srcArea" où nous reçevons le code source -->
+<textarea id="srcArea"></textarea><br>
+
+<!-- Le bouton qui lance l'évaluation de "srcArea" en appelant 
+     la fonction javascript evalButtonClick() quand on clique dessus -->
+<button id="evalButton" onclick="evalButtonClicked()">Eval</button>
+<button id="clear" onclick="clearoutputButtonClicked()">Clear</button>
+<button id="clear" onclick="clearallButtonClicked()">ClearAll</button>
+<button id="newline" onclick="newline()">NewLine</button><br>
+
+<!-- La zone "outputArea", non éditable -->
+<textarea id="outputArea" readonly></textarea><br>
+</body>
+</html>
